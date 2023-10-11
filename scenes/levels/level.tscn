@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://csqbnw7u033lk"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_3jmhy"]
+[ext_resource type="PackedScene" uid="uid://bf5ko406wbxut" path="res://scenes/packed_nodes/field.tscn" id="2_ttj1o"]
+[ext_resource type="Texture2D" uid="uid://b7p6ecymowgi1" path="res://graphics/bg.jpg" id="2_vmrmj"]
+[ext_resource type="Script" path="res://scripts/scorelabel.gd" id="4_v50ru"]
+[ext_resource type="Script" path="res://scripts/countdownlabel.gd" id="5_nmes4"]
+[ext_resource type="Script" path="res://scripts/scenecamera.gd" id="6_21l2n"]
+
+[sub_resource type="SystemFont" id="SystemFont_qma6x"]
+
+[sub_resource type="SystemFont" id="SystemFont_ngck3"]
+
+[sub_resource type="Theme" id="Theme_pmcvx"]
+
+[node name="Level" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_3jmhy")
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = -3
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+offset_left = -2.00003
+offset_top = -68.0
+offset_right = 2998.0
+offset_bottom = 1932.0
+scale = Vector2(0.385, 0.385)
+texture = ExtResource("2_vmrmj")
+stretch_mode = 2
+
+[node name="Field" parent="." instance=ExtResource("2_ttj1o")]
+scale = Vector2(0.336, 0.336)
+
+[node name="scorelabel" type="Label" parent="."]
+offset_left = 431.0
+offset_top = 234.0
+offset_right = 732.0
+offset_bottom = 407.0
+theme_override_fonts/font = SubResource("SystemFont_qma6x")
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_v50ru")
+
+[node name="countdownlabel" type="Label" parent="."]
+offset_left = 392.0
+offset_top = -44.0
+offset_right = 782.0
+offset_bottom = 570.0
+theme_override_fonts/font = SubResource("SystemFont_ngck3")
+theme_override_font_sizes/font_size = 45
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_nmes4")
+
+[node name="scenecamera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("6_21l2n")
+
+[node name="audioplayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 3
+
+[node name="audioplayer2" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+max_polyphony = 3
+
+[node name="audioplayer3" type="AudioStreamPlayer" parent="."]
+volume_db = 10.0
+max_polyphony = 3
+
+[node name="spawnlocations2" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="spawnlocations2"]
+position = Vector2(581.403, 87.6461)
+
+[node name="1" type="Node2D" parent="spawnlocations2"]
+position = Vector2(586.57, 553.01)
+
+[node name="spawnlocations3" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="spawnlocations3"]
+position = Vector2(581.403, 87.6461)
+
+[node name="1" type="Node2D" parent="spawnlocations3"]
+position = Vector2(765.906, 429.362)
+
+[node name="2" type="Node2D" parent="spawnlocations3"]
+position = Vector2(384.58, 414.26)
+
+[node name="spawnlocations4" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="spawnlocations4"]
+position = Vector2(410.065, 172.628)
+
+[node name="1" type="Node2D" parent="spawnlocations4"]
+position = Vector2(766.85, 186.787)
+
+[node name="2" type="Node2D" parent="spawnlocations4"]
+position = Vector2(393.075, 445.408)
+
+[node name="3" type="Node2D" parent="spawnlocations4"]
+position = Vector2(773.457, 441.633)
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+process_mode = 3
+handle_input_locally = false
+mode = 2
+initial_position = 1
+size = Vector2i(200, 100)
+always_on_top = true
+
+[node name="PlayButton" type="Button" parent="PopupPanel"]
+process_mode = 3
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 196.0
+offset_bottom = 96.0
+theme = SubResource("Theme_pmcvx")
+action_mode = 0
+text = "Play"
+
+[node name="TextureButton" type="TextureButton" parent="PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 196.0
+offset_bottom = 96.0
+
+[node name="center" type="Node2D" parent="."]
+position = Vector2(582.467, 319.405)
+
+[connection signal="popup_hide" from="PopupPanel" to="." method="_on_popup_panel_popup_hide"]
+[connection signal="button_down" from="PopupPanel/PlayButton" to="." method="_on_play_button_button_down"]

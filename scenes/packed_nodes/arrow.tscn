@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://4u7aivugp53o"]
+
+[ext_resource type="Texture2D" uid="uid://c22e4edh3fxmo" path="res://graphics/arrow.png" id="1_upxre"]
+
+[node name="Arrow" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-730, -30)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_upxre")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -1210.0
+offset_top = -510.0
+offset_right = 710.0
+offset_bottom = 1410.0
+scale = Vector2(0.5, 0.5)
+fill_mode = 1
+texture_under = ExtResource("1_upxre")
+texture_progress = ExtResource("1_upxre")
+tint_under = Color(1, 1, 1, 0)

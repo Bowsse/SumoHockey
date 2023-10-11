@@ -1,0 +1,322 @@
+[gd_scene load_steps=8 format=3 uid="uid://20on7avfx0a2"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_4vm4v"]
+[ext_resource type="Texture2D" uid="uid://b7p6ecymowgi1" path="res://graphics/bg.jpg" id="2_8xwp0"]
+[ext_resource type="Texture2D" uid="uid://bq1gnrnvfx43q" path="res://graphics/faces/01.png" id="3_n58h1"]
+[ext_resource type="Texture2D" uid="uid://df1yiwuw1c0r2" path="res://graphics/faces/02.png" id="4_mefvv"]
+[ext_resource type="Texture2D" uid="uid://bbs3vcq6keg0p" path="res://graphics/faces/03.png" id="5_5xb1j"]
+[ext_resource type="Texture2D" uid="uid://dw120r4t07gdq" path="res://graphics/faces/04.png" id="6_0hr0m"]
+[ext_resource type="Texture2D" uid="uid://ki4rhy6xdmdt" path="res://graphics/faces/05.png" id="7_a7tfi"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4vm4v")
+
+[node name="BGTexture" type="Node2D" parent="."]
+scale = Vector2(0.35, 0.35)
+
+[node name="TextureRect" type="TextureRect" parent="BGTexture"]
+offset_right = 3369.0
+offset_bottom = 2246.0
+texture = ExtResource("2_8xwp0")
+stretch_mode = 4
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 427.0
+offset_right = 693.0
+offset_bottom = 556.0
+text = "Start
+"
+
+[node name="PlayerCount" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 334.0
+offset_right = 431.0
+offset_bottom = 423.0
+item_count = 3
+item_0/text = "2"
+item_1/text = "3"
+item_2/text = "4"
+
+[node name="PlayerControls" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 157.0
+offset_right = 805.0
+offset_bottom = 335.0
+
+[node name="Button1" type="Button" parent="PlayerControls"]
+visible = false
+layout_mode = 2
+text = "Player 1 Controls"
+
+[node name="Label1" type="Label" parent="PlayerControls/Button1"]
+layout_mode = 0
+offset_left = -110.0
+offset_top = 2.0
+offset_right = -7.0
+offset_bottom = 25.0
+
+[node name="Name1" type="Label" parent="PlayerControls/Button1"]
+layout_mode = 0
+offset_left = -229.0
+offset_top = 2.0
+offset_right = -126.0
+offset_bottom = 25.0
+
+[node name="Button2" type="Button" parent="PlayerControls"]
+visible = false
+layout_mode = 2
+text = "Player 2 Controls"
+
+[node name="Label2" type="Label" parent="PlayerControls/Button2"]
+layout_mode = 0
+offset_left = -110.0
+offset_top = 2.0
+offset_right = -7.0
+offset_bottom = 25.0
+
+[node name="Name2" type="Label" parent="PlayerControls/Button2"]
+layout_mode = 0
+offset_left = -229.0
+offset_top = 2.0
+offset_right = -126.0
+offset_bottom = 25.0
+
+[node name="Button3" type="Button" parent="PlayerControls"]
+visible = false
+layout_mode = 2
+text = "Player 3 Controls"
+
+[node name="Label3" type="Label" parent="PlayerControls/Button3"]
+layout_mode = 0
+offset_left = -110.0
+offset_top = 2.0
+offset_right = -7.0
+offset_bottom = 25.0
+
+[node name="Name3" type="Label" parent="PlayerControls/Button3"]
+layout_mode = 0
+offset_left = -229.0
+offset_top = 2.0
+offset_right = -126.0
+offset_bottom = 25.0
+
+[node name="Button4" type="Button" parent="PlayerControls"]
+visible = false
+layout_mode = 2
+text = "Player 4 Controls"
+
+[node name="Label4" type="Label" parent="PlayerControls/Button4"]
+layout_mode = 0
+offset_left = -110.0
+offset_top = 2.0
+offset_right = -7.0
+offset_bottom = 25.0
+
+[node name="Name4" type="Label" parent="PlayerControls/Button4"]
+layout_mode = 0
+offset_left = -229.0
+offset_top = 2.0
+offset_right = -126.0
+offset_bottom = 25.0
+
+[node name="ItemList" type="ItemList" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 817.0
+offset_top = 157.0
+offset_right = 981.0
+offset_bottom = 301.0
+allow_reselect = true
+item_count = 5
+item_0/text = "WASD"
+item_1/text = "Arrows"
+item_2/text = "Controller 1"
+item_3/text = "Controller 2"
+item_4/text = "IJKL"
+
+[node name="PlayerName" type="LineEdit" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 585.0
+offset_top = 88.0
+offset_right = 805.0
+offset_bottom = 129.0
+placeholder_text = "Player name"
+
+[node name="Label" type="Label" parent="PlayerName"]
+layout_mode = 0
+offset_left = -126.0
+offset_top = 6.0
+offset_right = -11.0
+offset_bottom = 47.0
+text = "Player  name:"
+
+[node name="PlayerCountLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 369.0
+offset_right = 366.0
+offset_bottom = 457.0
+text = "Player count:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 987.0
+offset_top = 157.0
+offset_right = 1088.0
+offset_bottom = 301.0
+
+[node name="LabelColorPicker" type="Label" parent="ColorPickerButton"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -25.0
+offset_right = 46.0
+offset_bottom = -2.0
+text = "Select color"
+
+[node name="ColorP1" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 585.0
+offset_top = 157.0
+offset_right = 621.0
+offset_bottom = 188.0
+
+[node name="ColorP2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 585.0
+offset_top = 192.0
+offset_right = 621.0
+offset_bottom = 223.0
+
+[node name="ColorP3" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 585.0
+offset_top = 227.0
+offset_right = 621.0
+offset_bottom = 258.0
+
+[node name="ColorP4" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 585.0
+offset_top = 262.0
+offset_right = 621.0
+offset_bottom = 293.0
+
+[node name="ButtonFace" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 987.0
+offset_top = 349.0
+offset_right = 1082.0
+offset_bottom = 389.0
+text = "Pick face"
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+mode = 2
+initial_position = 2
+item_count = 6
+item_0/text = ""
+item_0/icon = ExtResource("3_n58h1")
+item_0/id = 0
+item_1/text = ""
+item_1/icon = ExtResource("4_mefvv")
+item_1/id = 1
+item_2/text = ""
+item_2/icon = ExtResource("5_5xb1j")
+item_2/id = 2
+item_3/text = ""
+item_3/icon = ExtResource("6_0hr0m")
+item_3/id = 3
+item_4/text = ""
+item_4/icon = ExtResource("7_a7tfi")
+item_4/id = 4
+item_5/text = "None"
+item_5/id = 5
+
+[node name="PlayerImages" type="Node2D" parent="."]
+position = Vector2(384.639, 172.379)
+
+[node name="playerImage1" type="Sprite2D" parent="PlayerImages"]
+position = Vector2(403.361, -0.378906)
+scale = Vector2(0.360173, 0.356536)
+region_enabled = true
+region_rect = Rect2(10, 35, 80, 80)
+
+[node name="playerImage2" type="Sprite2D" parent="PlayerImages"]
+position = Vector2(403.361, 35.6211)
+scale = Vector2(0.360173, 0.356536)
+region_enabled = true
+region_rect = Rect2(10, 35, 80, 80)
+
+[node name="playerImage3" type="Sprite2D" parent="PlayerImages"]
+position = Vector2(403.361, 70.6211)
+scale = Vector2(0.360173, 0.356536)
+region_enabled = true
+region_rect = Rect2(10, 35, 80, 80)
+
+[node name="playerImage4" type="Sprite2D" parent="PlayerImages"]
+position = Vector2(403.361, 104.621)
+scale = Vector2(0.360173, 0.356536)
+region_enabled = true
+region_rect = Rect2(10, 35, 80, 80)
+
+[node name="icewallCheckBox" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 369.0
+offset_right = 691.0
+offset_bottom = 400.0
+button_pressed = true
+text = "Enable icewall"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 63.0
+offset_right = 197.0
+offset_bottom = 167.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Bounciness"
+
+[node name="bounceSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+value = 80.0
+
+[node name="maxSpeedText" type="TextEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "max speed"
+
+[node name="torqueText" type="TextEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "torque"
+
+[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
+[connection signal="item_selected" from="PlayerCount" to="." method="_on_player_count_item_selected"]
+[connection signal="button_down" from="PlayerControls/Button1" to="." method="_on_button_1_button_down"]
+[connection signal="button_down" from="PlayerControls/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="PlayerControls/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="button_down" from="PlayerControls/Button4" to="." method="_on_button_4_button_down"]
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="text_changed" from="PlayerName" to="." method="_on_player_name_text_changed"]
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="button_down" from="ButtonFace" to="." method="_on_button_face_button_down"]
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://uit1yngrjpjk"]
+
+[ext_resource type="PackedScene" uid="uid://4u7aivugp53o" path="res://scenes/packed_nodes/arrow.tscn" id="1_a85fb"]
+
+[node name="remoteArrow" type="RemoteTransform2D"]
+remote_path = NodePath("Arrow")
+update_rotation = false
+
+[node name="Arrow" parent="." instance=ExtResource("1_a85fb")]

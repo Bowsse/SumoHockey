@@ -1,12 +1,14 @@
 extends Control
 
 var numberOfPlayers
-var currentlySelecting
+var currentlySelecting = 1
 var controlSchemes = ["WASD","Arrows","Controller 1","Controller 2","IJKL"]
 var playerColors = [Color(0.83,0.57,0.95,1),Color(0.54,0.98,0.6,1),Color(0.27,0.96,0.9,1),Color(0.9,0.26,0.01,0.8)]
 var menuTimer
 var playerNames = ["Player1","Player2","Player3","Player4"]
 var playerImages = [2,1,0,3]
+var currentlyEditingControl = 0
+
 #var face1 = preload("res://graphics/faces/01.png")
 #var face2 = preload("res://graphics/faces/02.png")
 #var face3 = preload("res://graphics/faces/03.png")
@@ -59,6 +61,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	pass
 
 
@@ -130,11 +133,11 @@ func openControllerSelection(player):
 
 	pass
 	
-func _on_item_list_item_selected(index):
+func _on_item_list_item_selected(index):	
 	playerControlOptions[currentlySelecting-1] = $ItemList.get_selected_items()[0]
 	find_children("Label" + str(currentlySelecting), "", true, false)[0].text = controlSchemes[playerControlOptions[currentlySelecting-1]]
+	print($ItemList.get_item_text($ItemList.get_selected_items()[0]))
 	
-	print(playerControlOptions)
 	pass # Replace with function body.
 
 func _on_button_1_button_down():
@@ -180,4 +183,17 @@ func _on_popup_menu_id_pressed(id):
 	else:
 		find_children("playerImage" + str(currentlySelecting), "", true, false)[0].set_texture(null)
 		
+	pass # Replace with function body.
+
+
+func _on_edit_controls_button_button_down():
+	if $EditControlsPanel.visible == true:
+		$EditControlsPanel.visible = false
+	else:
+		$EditControlsPanel.visible = true
+	pass # Replace with function body.
+
+
+func _on_edit_controls_list_item_selected(index):
+	currentlyEditingControl = $EditControlsPanel/HBoxContainer2/EditControlsList.get_selected_items()[0]
 	pass # Replace with function body.

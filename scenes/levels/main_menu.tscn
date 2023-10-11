@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://20on7avfx0a2"]
+[gd_scene load_steps=5 format=3 uid="uid://20on7avfx0a2"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_yx32k"]
 [ext_resource type="Texture2D" uid="uid://b7p6ecymowgi1" path="res://graphics/bg.jpg" id="2_yw8u3"]
+[ext_resource type="Script" path="res://scripts/KeybindEditButton.gd" id="3_hiu6m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwkbl"]
+bg_color = Color(0.0352941, 0.262745, 0.435294, 0.639216)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -130,7 +134,7 @@ layout_mode = 0
 offset_left = 817.0
 offset_top = 157.0
 offset_right = 981.0
-offset_bottom = 301.0
+offset_bottom = 304.0
 allow_reselect = true
 item_count = 5
 item_0/text = "WASD"
@@ -286,6 +290,112 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 placeholder_text = "torque"
 
+[node name="EditControlsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 369.0
+offset_top = 131.0
+offset_right = 786.0
+offset_bottom = 518.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwkbl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditControlsPanel"]
+layout_mode = 0
+offset_right = 404.0
+offset_bottom = 387.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditControlsPanel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EditControlsPanel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="EditControlsPanel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Right"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="EditControlsPanel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="EditControlsPanel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Down"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="EditControlsPanel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Speedburst"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EditControlsPanel/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="left" type="Button" parent="EditControlsPanel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+script = ExtResource("3_hiu6m")
+
+[node name="right" type="Button" parent="EditControlsPanel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+script = ExtResource("3_hiu6m")
+
+[node name="up" type="Button" parent="EditControlsPanel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+script = ExtResource("3_hiu6m")
+
+[node name="down" type="Button" parent="EditControlsPanel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+script = ExtResource("3_hiu6m")
+
+[node name="speedburst" type="Button" parent="EditControlsPanel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+script = ExtResource("3_hiu6m")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EditControlsPanel"]
+layout_mode = 0
+offset_top = 276.0
+offset_right = 416.0
+offset_bottom = 387.0
+
+[node name="EditControlsList" type="ItemList" parent="EditControlsPanel/HBoxContainer2"]
+custom_minimum_size = Vector2(415, 0)
+layout_mode = 2
+item_count = 5
+item_0/text = "WASD"
+item_1/text = "Arrows"
+item_2/text = "Controller1"
+item_3/text = "Controller 2"
+item_4/text = "IJKL"
+
+[node name="EditControlsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 817.0
+offset_top = 92.0
+offset_right = 981.0
+offset_bottom = 131.0
+text = "Edit controls"
+
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="item_selected" from="PlayerCount" to="." method="_on_player_count_item_selected"]
 [connection signal="button_down" from="PlayerControls/Button1" to="." method="_on_button_1_button_down"]
@@ -297,3 +407,15 @@ placeholder_text = "torque"
 [connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
 [connection signal="button_down" from="ButtonFace" to="." method="_on_button_face_button_down"]
 [connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="toggled" from="EditControlsPanel/HBoxContainer/VBoxContainer2/left" to="EditControlsPanel/HBoxContainer/VBoxContainer2/left" method="_on_toggled"]
+[connection signal="toggled" from="EditControlsPanel/HBoxContainer/VBoxContainer2/right" to="EditControlsPanel/HBoxContainer/VBoxContainer2/right" method="_on_toggled"]
+[connection signal="toggled" from="EditControlsPanel/HBoxContainer/VBoxContainer2/up" to="EditControlsPanel/HBoxContainer/VBoxContainer2/up" method="_on_toggled"]
+[connection signal="toggled" from="EditControlsPanel/HBoxContainer/VBoxContainer2/down" to="EditControlsPanel/HBoxContainer/VBoxContainer2/down" method="_on_toggled"]
+[connection signal="toggled" from="EditControlsPanel/HBoxContainer/VBoxContainer2/speedburst" to="EditControlsPanel/HBoxContainer/VBoxContainer2/speedburst" method="_on_toggled"]
+[connection signal="item_selected" from="EditControlsPanel/HBoxContainer2/EditControlsList" to="." method="_on_edit_controls_list_item_selected"]
+[connection signal="item_selected" from="EditControlsPanel/HBoxContainer2/EditControlsList" to="EditControlsPanel/HBoxContainer/VBoxContainer2/left" method="_on_edit_controls_list_item_selected"]
+[connection signal="item_selected" from="EditControlsPanel/HBoxContainer2/EditControlsList" to="EditControlsPanel/HBoxContainer/VBoxContainer2/right" method="_on_edit_controls_list_item_selected"]
+[connection signal="item_selected" from="EditControlsPanel/HBoxContainer2/EditControlsList" to="EditControlsPanel/HBoxContainer/VBoxContainer2/up" method="_on_edit_controls_list_item_selected"]
+[connection signal="item_selected" from="EditControlsPanel/HBoxContainer2/EditControlsList" to="EditControlsPanel/HBoxContainer/VBoxContainer2/down" method="_on_edit_controls_list_item_selected"]
+[connection signal="item_selected" from="EditControlsPanel/HBoxContainer2/EditControlsList" to="EditControlsPanel/HBoxContainer/VBoxContainer2/speedburst" method="_on_edit_controls_list_item_selected"]
+[connection signal="button_down" from="EditControlsButton" to="." method="_on_edit_controls_button_button_down"]

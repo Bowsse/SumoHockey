@@ -135,7 +135,35 @@ func _ready():
 
 
 func _process(_delta):
-	
+	if Input.is_action_pressed("key_exit"):
+		var scene = load("res://scenes/levels/main_menu.tscn").instantiate()
+		var curScene = get_tree().current_scene
+		print("current scene: " + str(curScene))
+		get_tree().paused = true
+		get_tree().root.add_child(scene)
+		get_tree().set_current_scene(scene)
+		
+		var removePlayers = find_children("player*", "", true, false)
+		var  i = 0
+		while i < removePlayers.size():
+			remove_child(removePlayers[i])
+			i = i + 1
+		
+		var removeField = find_children("Field", "", true, false)
+		i = 0
+		while i < removeField.size():
+			remove_child(removeField[i])
+			i = i + 1
+		
+		GameManager.Players = []
+		GameManager.GameEnded = false
+		GameManager.PlayerControlOptions = []
+		GameManager.playerColors = []
+		GameManager.PlayerNames = []
+		GameManager.playerImages = []
+		GameManager.faces = []
+		
+		get_tree().root.remove_child(curScene)
 	pass
 
 

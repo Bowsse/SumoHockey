@@ -42,6 +42,7 @@ func get_faces():
 	pass
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	var files = []
 	files = get_faces()
 
@@ -88,6 +89,7 @@ func _on_start_button_down():
 			GameManager.torque = 1200
 		
 		get_tree().root.add_child(scene)
+		get_tree().set_current_scene(scene)
 		get_tree().root.remove_child(curScene)
 	else:
 		return

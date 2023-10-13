@@ -189,6 +189,7 @@ func _process(_delta):
 		GameManager.PlayerNames = []
 		GameManager.playerImages = []
 		GameManager.faces = []
+		GameManager.AlivePlayers = []
 		
 		get_tree().root.remove_child(curScene)
 	pass

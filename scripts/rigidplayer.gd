@@ -56,6 +56,7 @@ func _integrate_forces(state):
 				#print(arrow.rotation)
 			#arrow.rotation = (Vector2.ZERO - input).angle()
 			var curRot = arrow.rotation
+			# TODO:::::::::processiin lerppirotaatio delta weightillä
 			if input != Vector2.ZERO:
 				arrow.rotation = lerp_angle(curRot, (Vector2.ZERO - input).angle(), 0.05)
 

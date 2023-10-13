@@ -11,7 +11,6 @@ func _ready():
 func _process(delta):
 	#var scorestring = str($"..".score_array)
 	
-
 		
 	text = $"..".lastWinnerText
 	pass

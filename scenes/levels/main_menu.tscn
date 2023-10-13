@@ -34,6 +34,15 @@ offset_bottom = 556.0
 text = "Start
 "
 
+[node name="StartLevel2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 742.0
+offset_top = 427.0
+offset_right = 961.0
+offset_bottom = 556.0
+text = "Start level 2
+"
+
 [node name="PlayerCount" type="ItemList" parent="."]
 layout_mode = 0
 offset_left = 356.0
@@ -397,6 +406,7 @@ offset_bottom = 131.0
 text = "Edit controls"
 
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="StartLevel2" to="." method="_on_start_level_2_button_down"]
 [connection signal="item_selected" from="PlayerCount" to="." method="_on_player_count_item_selected"]
 [connection signal="button_down" from="PlayerControls/Button1" to="." method="_on_button_1_button_down"]
 [connection signal="button_down" from="PlayerControls/Button2" to="." method="_on_button_2_button_down"]

@@ -2,7 +2,6 @@ extends Node2D
 
 var timer
 var timerDraw
-var score_array: Array[int] = [0,0]
 var drawT
 var lastWinnerText = ""
 var lastRoundWinner
@@ -58,8 +57,13 @@ func drawTimeout():
 
 func game_restart():
 
-	$Field/PowerUpSpawner.reset_powerups()
+	$PowerUpSpawner.reset_powerups()
+	GameManager.GameEnded = true
 	timer.start()
+	$Puck.linear_velocity = Vector2.ZERO
+	$Puck.find_child("PinJoint2D", true, false).node_b = ""
+	$Puck.position = $center.position
+	$Puck.PROCESS_MODE_DISABLED
 	for p in GameManager.Players:
 		var playernode = find_children("player"+str(p.id), "", true, false)
 		#print(playernode)
@@ -67,14 +71,7 @@ func game_restart():
 		#playernode[0].respawn()
 		playernode[0].process_mode = Node.PROCESS_MODE_INHERIT
 		playernode[0].burstAvailable = false
-		print(imageSize)
-		print(faceSize)
-		print(colliderSize)
-		print(hitAreaSize)
-		print(scoreTextSize)
-		print(initMass)
-		print(initTorque)
-
+		
 		playernode[0].find_child("PlayerImage", true, false).scale = imageSize
 		playernode[0].find_child("FaceSprite", true, false).scale = faceSize
 		playernode[0].find_child("CollisionShape2D", true, false).scale= colliderSize
@@ -82,23 +79,21 @@ func game_restart():
 		playernode[0].find_child("LabelScore", true, false).scale = scoreTextSize
 		playernode[0].mass = initMass
 		playernode[0].torque = initTorque
-
 		#playernode[0].set_position(playernode[0].spawnPosition)
 		
-	#score_array[player] = score_array[player] +1
-	$Field.scale = $Field.init_scale
-	$Field.reset_wall()
-	$scorelabel.text = lastWinnerText
-	$PopupPanel.show()
-	$PopupPanel.position.y = $PopupPanel.position.y + 80
-	$PopupPanel/PlayButton.grab_focus()
-	get_tree().paused = true
+		
+	#$scorelabel.text = lastWinnerText
+	#$PopupPanel.show()
+	#PopupPanel.position.y = $PopupPanel.position.y + 80
+	#$PopupPanel/PlayButton.grab_focus()
+	#get_tree().paused = true
 	
 	
 	
 func timeout():
 	#print("timer")
 	GameManager.GameEnded = false
+	$Puck.PROCESS_MODE_INHERIT
 	for p in GameManager.Players:
 		var playernode = find_children("player"+str(p.id), "", true, false)
 		#print(playernode)
@@ -110,7 +105,7 @@ func timeout():
 	
 func _ready():
 	for p in GameManager.Players:
-		var player = load("res://scenes/packed_nodes/player.tscn")
+		var player = load("res://scenes/packed_nodes/playerHockey.tscn")
 		var player_instance = player.instantiate()
 		player_instance.set_name("player" + str(p.id))
 		add_child(player_instance)
@@ -118,7 +113,6 @@ func _ready():
 		var spawnpos = spawnPositions[0].get_child(int(p.id)-1)
 		player_instance.set_position(spawnpos.position)
 		player_instance.playerId = p.id
-		
 		imageSize = player_instance.find_child("PlayerImage", true, false).scale
 		faceSize = player_instance.find_child("FaceSprite", true, false).scale
 		colliderSize = player_instance.find_child("CollisionShape2D", true, false).scale
@@ -126,6 +120,7 @@ func _ready():
 		scoreTextSize = player_instance.find_child("LabelScore", true, false).scale
 		initMass = player_instance.mass
 		initTorque = player_instance.torque
+		
 
 		player_instance.spawnPosition = spawnpos.position
 		player_instance.key_left = "left" + str(GameManager.PlayerControlOptions[p.id])

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b7p6ecymowgi1" path="res://graphics/bg.jpg" id="2_vmrmj"]
 [ext_resource type="Script" path="res://scripts/scorelabel.gd" id="4_v50ru"]
 [ext_resource type="Script" path="res://scripts/countdownlabel.gd" id="5_nmes4"]
-[ext_resource type="Script" path="res://scripts/scenecamera.gd" id="6_21l2n"]
+[ext_resource type="PackedScene" uid="uid://cqhtkrdsn76he" path="res://scenes/packed_nodes/power_up_spawner.tscn" id="6_sl53w"]
 
 [sub_resource type="SystemFont" id="SystemFont_qma6x"]
 
@@ -32,6 +32,11 @@ stretch_mode = 2
 [node name="Field" parent="." instance=ExtResource("2_ttj1o")]
 scale = Vector2(0.336, 0.336)
 
+[node name="PowerUpSpawner" parent="Field" node_paths=PackedStringArray("centerPosObject") instance=ExtResource("6_sl53w")]
+position = Vector2(-1752.98, -958.333)
+scale = Vector2(2.97619, 2.97619)
+centerPosObject = NodePath("..")
+
 [node name="scorelabel" type="Label" parent="."]
 offset_left = 431.0
 offset_top = 234.0
@@ -56,7 +61,6 @@ script = ExtResource("5_nmes4")
 
 [node name="scenecamera" type="Camera2D" parent="."]
 anchor_mode = 0
-script = ExtResource("6_21l2n")
 
 [node name="audioplayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 3

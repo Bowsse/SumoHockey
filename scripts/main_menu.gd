@@ -42,6 +42,7 @@ func get_faces():
 	pass
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	var files = []
 	files = get_faces()
 
@@ -88,6 +89,7 @@ func _on_start_button_down():
 			GameManager.torque = 1200
 		
 		get_tree().root.add_child(scene)
+		get_tree().set_current_scene(scene)
 		get_tree().root.remove_child(curScene)
 	else:
 		return
@@ -196,4 +198,33 @@ func _on_edit_controls_button_button_down():
 
 func _on_edit_controls_list_item_selected(index):
 	currentlyEditingControl = $EditControlsPanel/HBoxContainer2/EditControlsList.get_selected_items()[0]
+	pass # Replace with function body.
+
+
+func _on_start_level_2_button_down():
+	if $PlayerCount.is_anything_selected():
+		GameManager.populate_Players($PlayerCount.get_item_text($PlayerCount.get_selected_items()[0]))
+		GameManager.PlayerNames = playerNames
+		GameManager.PlayerControlOptions = playerControlOptions
+		GameManager.playerColors = playerColors
+		GameManager.playerImages = playerImages
+		GameManager.faces = faceSprites
+		GameManager.icewallEnabled = $icewallCheckBox.is_pressed()
+		var scene = load("res://scenes/levels/level2.tscn").instantiate()
+		var curScene = get_tree().current_scene
+		GameManager.bounce = $VBoxContainer/bounceSlider.value/100
+		if $VBoxContainer/maxSpeedText.text:
+			GameManager.maxSpeed = int($VBoxContainer/maxSpeedText.text)
+		else: 
+			GameManager.maxSpeed = 550
+		if $VBoxContainer/torqueText.text:
+			GameManager.torque = int($VBoxContainer/torqueText.text)
+		else: 
+			GameManager.torque = 1200
+		
+		get_tree().root.add_child(scene)
+		get_tree().set_current_scene(scene)
+		get_tree().root.remove_child(curScene)
+	else:
+		return
 	pass # Replace with function body.

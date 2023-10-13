@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqhtkrdsn76he"]
+
+[ext_resource type="Script" path="res://scripts/PowerUpSpawner.gd" id="1_cojid"]
+
+[node name="PowerUpSpawner" type="Node2D" node_paths=PackedStringArray("centerPosObject", "radiusObject")]
+script = ExtResource("1_cojid")
+centerPosObject = NodePath("")
+radiusObject = NodePath("")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0pu464f1ji5o"]
+[gd_scene load_steps=7 format=3 uid="uid://d1vsuvwby6h1g"]
 
-[ext_resource type="Script" path="res://scripts/rigidplayer.gd" id="1_7q6gv"]
-[ext_resource type="Texture2D" uid="uid://p5ldufr8fsvx" path="res://graphics/button.png" id="2_5jovm"]
-[ext_resource type="PackedScene" uid="uid://brhyuqkvcrc0y" path="res://scenes/packed_nodes/trail.tscn" id="3_6niau"]
-[ext_resource type="Script" path="res://scripts/hitarea.gd" id="4_hdrjv"]
+[ext_resource type="Script" path="res://scripts/rigidplayerHockey.gd" id="1_sclrf"]
+[ext_resource type="Texture2D" uid="uid://p5ldufr8fsvx" path="res://graphics/button.png" id="2_6jeq2"]
+[ext_resource type="PackedScene" uid="uid://brhyuqkvcrc0y" path="res://scenes/packed_nodes/trail.tscn" id="3_cinf1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0700"]
 friction = 0.0
@@ -22,7 +21,7 @@ max_contacts_reported = 5
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-script = ExtResource("1_7q6gv")
+script = ExtResource("1_sclrf")
 
 [node name="PlayerImage" type="TextureProgressBar" parent="."]
 offset_left = -400.0
@@ -32,15 +31,15 @@ offset_bottom = 400.0
 scale = Vector2(0.08, 0.08)
 pivot_offset = Vector2(400, 400)
 fill_mode = 5
-texture_under = ExtResource("2_5jovm")
-texture_progress = ExtResource("2_5jovm")
+texture_under = ExtResource("2_6jeq2")
+texture_progress = ExtResource("2_6jeq2")
 tint_progress = Color(0.286275, 0.286275, 0.286275, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.32, 0.32)
 shape = SubResource("CircleShape2D_knx82")
 
-[node name="trail" parent="." instance=ExtResource("3_6niau")]
+[node name="trail" parent="." instance=ExtResource("3_cinf1")]
 z_index = -1
 width = 60.0
 texture_mode = 1
@@ -64,9 +63,6 @@ vertical_alignment = 1
 
 [node name="hitarea" type="Area2D" parent="."]
 visible = false
-script = ExtResource("4_hdrjv")
 
 [node name="HitCollisionShape2D" type="CollisionShape2D" parent="hitarea"]
 shape = SubResource("CircleShape2D_1kc6j")
-
-[connection signal="body_entered" from="hitarea" to="hitarea" method="_on_body_entered"]

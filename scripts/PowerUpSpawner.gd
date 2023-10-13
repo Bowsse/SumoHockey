@@ -15,6 +15,7 @@ var radiusObject: Node2D
 
 func reset_powerups():
 	spawnedPowerups = find_children("powerup*", "", true, false)
+	print(spawnedPowerups)
 	for i in range(0, spawnedPowerups.size()):
 		remove_child(spawnedPowerups[i])
 		spawnedPowerups[i].queue_free()

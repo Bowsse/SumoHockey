@@ -24,6 +24,7 @@ var burstSound = preload("res://audio/burstsound.mp3")
 var burstAmplitude = 0.2
 var isCarryingPuck = false
 var slapshot = preload("res://audio/slapshot.mp3")
+var poweredUp = false
 
 
 func speedburst(state, input):
@@ -90,7 +91,7 @@ func _integrate_forces(state):
 			$".."/audioplayer3.stream = burstSound
 			$".."/audioplayer3.play()
 			
-			state.apply_impulse((Vector2(cos(arrow.rotation),sin(arrow.rotation))*-1)*torque*burstAmplitude, Vector2(0,0))
+			state.apply_impulse((Vector2(cos(arrow.rotation),sin(arrow.rotation))*-1)*GameManager.burstImpulse*burstAmplitude, Vector2(0,0))
 			#print(str(arrow.rotation) + " VITTU EI TOIMI")
 			#print(burstAmplitude)
 			#$ArrowLine.add_point(Vector2.ZERO)

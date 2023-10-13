@@ -300,6 +300,11 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 placeholder_text = "torque"
 
+[node name="burstPowerText" type="TextEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "burstpower"
+
 [node name="EditControlsPanel" type="Panel" parent="."]
 visible = false
 layout_mode = 2

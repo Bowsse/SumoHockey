@@ -79,6 +79,7 @@ func game_restart():
 		playernode[0].find_child("LabelScore", true, false).scale = scoreTextSize
 		playernode[0].mass = initMass
 		playernode[0].torque = initTorque
+		playernode[0].poweredUp = false
 		#playernode[0].set_position(playernode[0].spawnPosition)
 		
 		

@@ -72,7 +72,7 @@ func _integrate_forces(state):
 			$".."/audioplayer3.stream = burstSound
 			$".."/audioplayer3.play()
 			
-			state.apply_impulse((Vector2(cos(arrow.rotation),sin(arrow.rotation))*-1)*torque*burstAmplitude, Vector2(0,0))
+			state.apply_impulse((Vector2(cos(arrow.rotation),sin(arrow.rotation))*-1)*GameManager.burstImpulse*burstAmplitude, Vector2(0,0))
 			#print(str(arrow.rotation) + " VITTU EI TOIMI")
 			#print(burstAmplitude)
 			#$ArrowLine.add_point(Vector2.ZERO)

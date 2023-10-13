@@ -87,6 +87,10 @@ func _on_start_button_down():
 			GameManager.torque = int($VBoxContainer/torqueText.text)
 		else: 
 			GameManager.torque = 1200
+		if $VBoxContainer/burstPowerText.text:
+			GameManager.burstImpulse = int($VBoxContainer/burstPowerText.text)
+		else: 
+			GameManager.burstImpulse = 1200
 		
 		get_tree().root.add_child(scene)
 		get_tree().set_current_scene(scene)
@@ -221,6 +225,10 @@ func _on_start_level_2_button_down():
 			GameManager.torque = int($VBoxContainer/torqueText.text)
 		else: 
 			GameManager.torque = 1200
+		if $VBoxContainer/burstPowerText.text:
+			GameManager.burstImpulse = int($VBoxContainer/burstPowerText.text)
+		else: 
+			GameManager.burstImpulse = 1200
 		
 		get_tree().root.add_child(scene)
 		get_tree().set_current_scene(scene)

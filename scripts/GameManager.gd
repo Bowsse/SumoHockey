@@ -12,6 +12,7 @@ var icewallEnabled
 var bounce
 var maxSpeed
 var torque
+var burstImpulse
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

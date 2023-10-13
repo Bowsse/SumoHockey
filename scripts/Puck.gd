@@ -12,11 +12,15 @@ func _process(delta):
 	if $PinJoint2D.get_node_b():
 		
 		var nodeb = get_node($PinJoint2D.get_node_b())
-		
-		if (position - nodeb.position).length() > 70:
+		print(nodeb.linear_velocity.length())
+		if (position - nodeb.position).length() > 40:
 			$PinJoint2D.set_node_b("")
 			
-			position = lerp(global_transform.origin, nodeb.position, 0.005)
+			position = lerp(global_transform.origin, nodeb.position, delta*10) 
+			$PinJoint2D.set_node_b(nodeb.get_path())
+		elif nodeb.linear_velocity.length() > 200:
+			$PinJoint2D.set_node_b("")
+			position = lerp(global_transform.origin, nodeb.position + nodeb.linear_velocity/2, delta*4) 
 			$PinJoint2D.set_node_b(nodeb.get_path())
 		
 	pass

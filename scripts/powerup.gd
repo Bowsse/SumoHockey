@@ -1,5 +1,4 @@
 extends Node2D
-var timer
 var poweringUp = false
 var poweringBody
 var image
@@ -14,12 +13,7 @@ func _ready():
 	$Sprite2D.modulate.a = 0
 	$StaticBody2D/Sprite2D.modulate.a = 0
 	$StaticBody2D/Sprite2D.scale = Vector2(10,10)
-	timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = 5.0
-	timer.one_shot = true
-	
-	timer.connect("timeout", self.timeout)
+
 	
 	pass # Replace with function body.
 
@@ -40,9 +34,16 @@ func _process(delta):
 			$StaticBody2D/Sprite2D.modulate.r = $StaticBody2D/Sprite2D.modulate.r + 3 * delta
 			$StaticBody2D/Sprite2D.modulate.g = $StaticBody2D/Sprite2D.modulate.g + 3 * delta
 			$StaticBody2D/Sprite2D.modulate.b = $StaticBody2D/Sprite2D.modulate.b + 3 * delta
+		if $StaticBody2D/Sprite2D.modulate.a > 1:
+			$StaticBody2D/Sprite2D.modulate.a = 1
+			$StaticBody2D/Sprite2D.modulate.r = 1
+			$StaticBody2D/Sprite2D.modulate.g = 1
+			$StaticBody2D/Sprite2D.modulate.b = 1
 			
 		if $StaticBody2D/Sprite2D.scale > Vector2(0.3,0.3):
 			$StaticBody2D/Sprite2D.scale = $StaticBody2D/Sprite2D.scale - Vector2(50, 50) * delta
+		if $StaticBody2D/Sprite2D.scale < Vector2(0.3,0.3):
+			$StaticBody2D/Sprite2D.scale = Vector2(0.3,0.3)
 			
 	if $StaticBody2D/Sprite2D.scale.x <= 0.5 && !poweringUp:
 		$Area2D.set_collision_layer_value(1, true)
@@ -68,17 +69,19 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	print(body)
 	if body.get_groups().has("players"):
-		poweringBody = body
-		image = body.find_child("PlayerImage", true, false)
-		face = body.find_child("FaceSprite", true, false)
-		colli = body.find_child("CollisionShape2D", true, false)
-		hit = body.find_child("HitCollisionShape2D", true, false)
-		score = body.find_child("LabelScore", true, false)
-		imageInitScale = image.scale
-		poweringUp = true
-		visible = false
-		$Area2D.set_collision_layer_value(1, false)
-		$Area2D.set_collision_mask_value(1, false)
+		if !body.poweredUp:
+			poweringBody = body
+			image = body.find_child("PlayerImage", true, false)
+			face = body.find_child("FaceSprite", true, false)
+			colli = body.find_child("CollisionShape2D", true, false)
+			hit = body.find_child("HitCollisionShape2D", true, false)
+			score = body.find_child("LabelScore", true, false)
+			imageInitScale = image.scale
+			poweringUp = true
+			visible = false
+			$Area2D.set_collision_layer_value(1, false)
+			$Area2D.set_collision_mask_value(1, false)
+			body.poweredUp = true
 		
 		#visible = false
 		

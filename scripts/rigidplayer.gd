@@ -22,6 +22,7 @@ var beforeBurstVelocity
 var burstEnded = false
 var burstSound = preload("res://audio/burstsound.mp3")
 var burstAmplitude = 0.2
+var poweredUp = false
 
 
 func speedburst(state, input):

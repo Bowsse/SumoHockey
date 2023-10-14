@@ -131,6 +131,12 @@ max_polyphony = 3
 volume_db = 10.0
 max_polyphony = 3
 
+[node name="SpritePuck" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1019.06, 578.558)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("7_23v0o")
+
 [node name="Puck" type="RigidBody2D" parent="."]
 position = Vector2(1019.06, 578.558)
 collision_layer = 2
@@ -138,10 +144,10 @@ collision_mask = 2
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_e4vd4")
 gravity_scale = 0.0
+can_sleep = false
 script = ExtResource("6_0pjht")
 
 [node name="Sprite2D" type="Sprite2D" parent="Puck"]
-modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.36, 0.36)
 texture = ExtResource("7_23v0o")
 
@@ -157,6 +163,7 @@ shape = SubResource("CircleShape2D_hd4t0")
 
 [node name="PinJoint2D" type="DampedSpringJoint2D" parent="Puck"]
 node_a = NodePath("..")
+disable_collision = false
 length = 1.0
 stiffness = 64.0
 damping = 16.0
@@ -248,6 +255,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("14_tc66a")
 
+[node name="showRealPuck" type="Button" parent="."]
+offset_left = 380.372
+offset_top = 1121.11
+offset_right = 388.372
+offset_bottom = 1129.11
+text = "show actual puck"
+
 [connection signal="body_entered" from="Puck/Area2D" to="Puck" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Puck/Area2D" to="Puck" method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="Goal2/Area2D" to="Goal2" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="showRealPuck" to="Puck" method="_on_show_real_puck_button_down"]

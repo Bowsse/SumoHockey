@@ -22,22 +22,21 @@ func reset_powerups():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	radiusObject = centerPosObject.find_child("CollisionShape2D", true, false)
-	
-	timer = Timer.new()
-	add_child(timer)
-	
-	timer.wait_time = randf_range(minTime, maxTime)
-	timer.one_shot = true
-	
-	timer.connect("timeout", self.timeout)
-	timer.start()
+	if GameManager.powerups:
+		radiusObject = centerPosObject.find_child("CollisionShape2D", true, false)
+		
+		timer = Timer.new()
+		add_child(timer)
+		
+		timer.wait_time = randf_range(minTime, maxTime)
+		timer.one_shot = true
+		
+		timer.connect("timeout", self.timeout)
+		timer.start()
 	pass # Replace with function body.
 
 func timeout():
 	radius = radiusObject.shape.radius * centerPosObject.scale.x	
-	print(radius)
 	r = radius * sqrt(randf())
 	theta = randf() * 2 * PI
 	x = centerPosObject.position.x + r * cos(theta)
@@ -46,7 +45,7 @@ func timeout():
 	p.set_name("powerup" + str(x) + str(y))
 	p.position.x = x
 	p.position.y = y
-	print(str(x) + "   " + str(y))
+	p.rotation_degrees = randi() % 360
 	add_child(p)
 	timer.wait_time = randf_range(minTime, maxTime)
 	timer.start()

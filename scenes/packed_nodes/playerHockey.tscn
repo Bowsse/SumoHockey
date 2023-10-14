@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1vsuvwby6h1g"]
+[gd_scene load_steps=8 format=3 uid="uid://d1vsuvwby6h1g"]
 
 [ext_resource type="Script" path="res://scripts/rigidplayerHockey.gd" id="1_sclrf"]
 [ext_resource type="Texture2D" uid="uid://p5ldufr8fsvx" path="res://graphics/button.png" id="2_6jeq2"]
 [ext_resource type="PackedScene" uid="uid://brhyuqkvcrc0y" path="res://scenes/packed_nodes/trail.tscn" id="3_cinf1"]
+[ext_resource type="Script" path="res://scripts/hockeyPlayerHitBox.gd" id="4_eegfx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0700"]
 friction = 0.0
@@ -62,7 +63,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="hitarea" type="Area2D" parent="."]
-visible = false
+script = ExtResource("4_eegfx")
 
 [node name="HitCollisionShape2D" type="CollisionShape2D" parent="hitarea"]
 shape = SubResource("CircleShape2D_1kc6j")
+
+[connection signal="body_entered" from="hitarea" to="hitarea" method="_on_body_entered"]

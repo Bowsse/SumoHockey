@@ -13,6 +13,9 @@ var bounce
 var maxSpeed
 var torque
 var burstImpulse
+var burstTime
+var powerups
+var burstCD
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

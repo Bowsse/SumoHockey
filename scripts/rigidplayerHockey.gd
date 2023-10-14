@@ -171,10 +171,10 @@ func _ready():
 	burstCD = Timer.new()
 	add_child(burstCD)
 	add_child(timer)
-	burstCD.wait_time = 3
+	burstCD.wait_time = GameManager.burstCD
 	burstCD.one_shot = true
 	burstCD.connect("timeout", self.burstTimeout)
-	timer.wait_time = 0.15
+	timer.wait_time = GameManager.burstTime
 	timer.one_shot = true
 	arrow = arrow.instantiate()
 	add_child(arrow)

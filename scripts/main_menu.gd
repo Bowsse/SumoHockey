@@ -76,6 +76,7 @@ func _on_start_button_down():
 		GameManager.playerImages = playerImages
 		GameManager.faces = faceSprites
 		GameManager.icewallEnabled = $icewallCheckBox.is_pressed()
+		GameManager.powerups = $powerupsCheckBox.is_pressed()
 		var scene = load("res://scenes/levels/level.tscn").instantiate()
 		var curScene = get_tree().current_scene
 		GameManager.bounce = $VBoxContainer/bounceSlider.value/100
@@ -91,6 +92,11 @@ func _on_start_button_down():
 			GameManager.burstImpulse = int($VBoxContainer/burstPowerText.text)
 		else: 
 			GameManager.burstImpulse = 1200
+		GameManager.burstTime = $VBoxContainer/burstTimeSlider.value/100
+		if $VBoxContainer/burstCD.text:
+			GameManager.burstCD = float($VBoxContainer/burstCD.text)
+		else:
+			GameManager.burstCD = 3.0
 		
 		get_tree().root.add_child(scene)
 		get_tree().set_current_scene(scene)
@@ -214,6 +220,7 @@ func _on_start_level_2_button_down():
 		GameManager.playerImages = playerImages
 		GameManager.faces = faceSprites
 		GameManager.icewallEnabled = $icewallCheckBox.is_pressed()
+		GameManager.powerups = $powerupsCheckBox.is_pressed()
 		var scene = load("res://scenes/levels/level2.tscn").instantiate()
 		var curScene = get_tree().current_scene
 		GameManager.bounce = $VBoxContainer/bounceSlider.value/100
@@ -229,6 +236,11 @@ func _on_start_level_2_button_down():
 			GameManager.burstImpulse = int($VBoxContainer/burstPowerText.text)
 		else: 
 			GameManager.burstImpulse = 1200
+		GameManager.burstTime = $VBoxContainer/burstTimeSlider.value/100
+		if $VBoxContainer/burstCD.text:
+			GameManager.burstCD = float($VBoxContainer/burstCD.text)
+		else:
+			GameManager.burstCD = 3.0
 		
 		get_tree().root.add_child(scene)
 		get_tree().set_current_scene(scene)

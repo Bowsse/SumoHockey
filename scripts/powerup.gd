@@ -67,7 +67,6 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	print(body)
 	if body.get_groups().has("players"):
 		if !body.poweredUp:
 			poweringBody = body

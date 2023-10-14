@@ -6,7 +6,11 @@ func _ready():
 
 func _physics_process(delta):
 	var puckPos = global_position
-	$"../SpritePuck".global_position = $"../SpritePuck".global_position.lerp(puckPos, delta * 15)
+	if $PinJoint2D.get_node_b():
+		$"../SpritePuck".global_position = $"../SpritePuck".global_position.lerp(puckPos, delta * 15)
+	else:
+		$"../SpritePuck".global_position = position
+	
 	
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,12 +26,11 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.get_groups().has("players"):
-		print("linear velo: " + str((linear_velocity - body.linear_velocity).length()))
-		if (linear_velocity - body.linear_velocity).length() < 1850:
+		if (linear_velocity - body.linear_velocity).length() < 1850 && !body.speedbursting:
 			$PinJoint2D.set_node_b(body.get_path())
 			body.isCarryingPuck = true
 		else:
-			linear_velocity = linear_velocity/8
+			linear_velocity = (linear_velocity/8) + (body.position - position)*2
 	match body.get_groups():
 		["walls"]:
 			$"../AudioStreamPlayer2D".stream = wallsound

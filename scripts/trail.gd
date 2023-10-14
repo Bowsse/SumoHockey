@@ -1,6 +1,6 @@
 extends Line2D
 
-var length = 30
+var length = 300
 var point = Vector2()
 
 
@@ -22,4 +22,5 @@ func _process(delta):
 	
 func _ready():
 	modulate.a = 0.4
+	length = GameManager.trailLength
 	pass

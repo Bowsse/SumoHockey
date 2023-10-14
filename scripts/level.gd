@@ -192,6 +192,14 @@ func _process(_delta):
 			removePlayers[i].queue_free()
 			i = i + 1
 		
+
+		
+		scene.playerNames = GameManager.PlayerNames
+		scene.playerControlOptions = GameManager.PlayerControlOptions
+		scene.playerColors = GameManager.playerColors
+		scene.playerImages = GameManager.playerImages
+		scene.faceSprites = GameManager.faces
+
 		
 		GameManager.Players = []
 		GameManager.GameEnded = false

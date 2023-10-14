@@ -97,6 +97,7 @@ func _on_start_button_down():
 			GameManager.burstCD = float($VBoxContainer/burstCD.text)
 		else:
 			GameManager.burstCD = 3.0
+		GameManager.trailLength = $VBoxContainer/trailLengthSlider.value
 		
 		get_tree().root.add_child(scene)
 		get_tree().set_current_scene(scene)
@@ -241,6 +242,7 @@ func _on_start_level_2_button_down():
 			GameManager.burstCD = float($VBoxContainer/burstCD.text)
 		else:
 			GameManager.burstCD = 3.0
+		GameManager.trailLength = $VBoxContainer/trailLengthSlider.value
 		
 		get_tree().root.add_child(scene)
 		get_tree().set_current_scene(scene)

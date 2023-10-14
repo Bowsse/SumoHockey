@@ -182,6 +182,12 @@ func _process(_delta):
 		while i < removeField.size():
 			remove_child(removeField[i])
 			i = i + 1
+			
+		scene.playerNames = GameManager.PlayerNames
+		scene.playerControlOptions = GameManager.PlayerControlOptions
+		scene.playerColors = GameManager.playerColors
+		scene.playerImages = GameManager.playerImages
+		scene.faceSprites = GameManager.faces
 		
 		GameManager.Players = []
 		GameManager.GameEnded = false

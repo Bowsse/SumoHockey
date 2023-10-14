@@ -16,6 +16,7 @@ var burstImpulse
 var burstTime
 var powerups
 var burstCD
+var trailLength
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

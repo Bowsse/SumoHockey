@@ -81,6 +81,7 @@ position = Vector2(984.179, 426.059)
 position = Vector2(1049.77, 728.781)
 
 [node name="rink" type="Node2D" parent="."]
+z_index = -3
 position = Vector2(1018, 578)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="rink" groups=["walls"]]

@@ -319,10 +319,23 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 placeholder_text = "burstCD (3)"
 
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "burst time (0,05s - 1s)"
+
 [node name="burstTimeSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 min_value = 5.0
 value = 15.0
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "trail length (0 - 500)"
+
+[node name="trailLengthSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 500.0
+value = 30.0
 
 [node name="EditControlsPanel" type="Panel" parent="."]
 visible = false

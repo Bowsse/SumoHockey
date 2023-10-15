@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7p6ecymowgi1" path="res://graphics/bg.jpg" id="2_yw8u3"]
 [ext_resource type="Script" path="res://scripts/KeybindEditButton.gd" id="3_hiu6m"]
 [ext_resource type="Script" path="res://scripts/HttpImages.gd" id="4_p23jj"]
-[ext_resource type="Script" path="res://scenes/levels/LoadImageFromUrl.gd" id="5_gvfne"]
+[ext_resource type="Script" path="res://scripts/LoadImageFromUrl.gd" id="5_ohoth"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwkbl"]
 bg_color = Color(0.0352941, 0.262745, 0.435294, 0.639216)
@@ -462,7 +462,7 @@ offset_top = 18.0
 offset_right = 538.0
 offset_bottom = 49.0
 text = "Load imge from url:"
-script = ExtResource("5_gvfne")
+script = ExtResource("5_ohoth")
 
 [node name="ImageUrl" type="TextEdit" parent="."]
 layout_mode = 0

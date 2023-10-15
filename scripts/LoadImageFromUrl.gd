@@ -41,5 +41,5 @@ func _on_button_down():
 	error = http_request.request($"../ImageUrl".text)
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
-
+	
 	pass # Replace with function body.

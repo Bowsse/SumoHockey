@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://20on7avfx0a2"]
+[gd_scene load_steps=7 format=3 uid="uid://20on7avfx0a2"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_yx32k"]
 [ext_resource type="Texture2D" uid="uid://b7p6ecymowgi1" path="res://graphics/bg.jpg" id="2_yw8u3"]
 [ext_resource type="Script" path="res://scripts/KeybindEditButton.gd" id="3_hiu6m"]
 [ext_resource type="Script" path="res://scripts/HttpImages.gd" id="4_p23jj"]
+[ext_resource type="Script" path="res://scenes/levels/LoadImageFromUrl.gd" id="5_gvfne"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwkbl"]
 bg_color = Color(0.0352941, 0.262745, 0.435294, 0.639216)
@@ -454,6 +455,23 @@ offset_right = 264.0
 offset_bottom = 49.0
 text = "Load face images from web"
 
+[node name="LoadImageFromUrl" type="Button" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 18.0
+offset_right = 538.0
+offset_bottom = 49.0
+text = "Load imge from url:"
+script = ExtResource("5_gvfne")
+
+[node name="ImageUrl" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 18.0
+offset_right = 981.0
+offset_bottom = 49.0
+placeholder_text = "Image url"
+
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="StartLevel2" to="." method="_on_start_level_2_button_down"]
 [connection signal="item_selected" from="PlayerCount" to="." method="_on_player_count_item_selected"]
@@ -479,3 +497,4 @@ text = "Load face images from web"
 [connection signal="item_selected" from="EditControlsPanel/HBoxContainer2/EditControlsList" to="EditControlsPanel/HBoxContainer/VBoxContainer2/speedburst" method="_on_edit_controls_list_item_selected"]
 [connection signal="button_down" from="EditControlsButton" to="." method="_on_edit_controls_button_button_down"]
 [connection signal="button_down" from="LoadImagesFromWebButton" to="HttpImages" method="_on_load_images_from_web_button_button_down"]
+[connection signal="button_down" from="LoadImageFromUrl" to="LoadImageFromUrl" method="_on_button_down"]
